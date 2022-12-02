@@ -53,11 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7010938015115717627, guid: 3707f65a538f94848b7d1594adfb9d9a, type: 3}
       propertyPath: m_Name
-      value: ParallaxPlayerWithAnimator
+      value: ParallaxPlayerWithAnimator Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7010938016138737864, guid: 3707f65a538f94848b7d1594adfb9d9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.46
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7010938016138737864, guid: 3707f65a538f94848b7d1594adfb9d9a, type: 3}
       propertyPath: m_LocalPosition.y
