@@ -14,6 +14,15 @@ public class PlayerAnimator : MonoBehaviour {
         if (rb == null) {
             rb = GetComponent<Rigidbody2D> ();
         }
+        GlobalEventSender.OnDanceStart += DanceStart;
+        GlobalEventSender.OnDanceEnd += DanceEnd;
+    }
+
+    void DanceStart () {
+        animator.SetBool ("isAnimating", true);
+    }
+    void DanceEnd () {
+        animator.SetBool ("isAnimating", false);
     }
 
     // Update is called once per frame
