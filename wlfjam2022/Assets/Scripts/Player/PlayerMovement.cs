@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum MovementState {
-    Air,
-    Ground
+    Air = 1000,
+    Ground = 2000
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -22,13 +22,33 @@ public class PlayerMovement : MonoBehaviour
     private float m_jumpSpeed = 1;
     [SerializeField, Tooltip("How fast character falls")]
     private float m_fallSpeed = 1;
+    [SerializeField, Tooltip("If the characters jas inertia in start and end of movement")]
+    private bool m_hasInertia = true;
+    [SerializeField]
+    private float m_accelerationSpeed = 1;
+    [SerializeField]
+    private float m_deccelerationSpeed = 1;
+    [SerializeField, Tooltip("How fast the character turns mid run")]
+    private float m_turnSpeed = 1;
 
-    private bool m_canJump = false;
+    private bool CanJump { 
+        get {
+            return m_rb.velocity.y <= 0 && IsDropJump;
+        } 
+    }
+    private bool IsDropJump {
+        get {
+            return Time.time - m_lastGroundTIme <= m_jumpAfterDropThreshHold;
+        }
+    }
+    private bool m_isJumpCancelled = false;
+    private float m_jumpAfterDropThreshHold = .1f;
+    private float m_lastGroundTIme;
 
     private MovementState m_movementState { 
         get { 
             if (IsGrounded()) {
-                m_canJump = true;
+                m_isJumpCancelled = false;
                 return MovementState.Ground; 
             } 
             else {
@@ -42,13 +62,6 @@ public class PlayerMovement : MonoBehaviour
         m_collider = GetComponent<BoxCollider2D>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         switch (m_movementState) {
@@ -64,11 +77,38 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void HandleGroundMovement() {
-        m_rb.velocity = new Vector2(m_movement.x * m_movementSpeed, m_rb.velocity.y);
+        if (m_hasInertia) {
+            //acceleration
+            int deccMultiplier = m_rb.velocity.x < 0 ? 1 : -1; //direction
+            int accMultiplier = m_movement.x > 0 ? 1 : -1; // direction
+            float turnSpeed = m_movement.x * m_rb.velocity.x < 0 ? m_turnSpeed : 0; //If the character is turning
+            if(m_movement.x != 0) {
+                float velocityX = m_rb.velocity.x + (m_accelerationSpeed + turnSpeed) * accMultiplier;
+                velocityX = Mathf.Clamp(velocityX, -m_movementSpeed, m_movementSpeed);
+                m_rb.velocity = new Vector2(velocityX, m_rb.velocity.y);
+            }
+
+            // direction
+            //decceleration right
+            else if(m_movement.x == 0 && m_rb.velocity.x > 0) {
+                float velocityX = m_rb.velocity.x + m_deccelerationSpeed * deccMultiplier;
+                velocityX = Mathf.Clamp(velocityX, 0, m_movementSpeed);
+                m_rb.velocity = new Vector2(velocityX, m_rb.velocity.y);
+            }
+            //decceleration left
+            else if (m_movement.x == 0 && m_rb.velocity.x < 0) {
+                float velocityX = m_rb.velocity.x + m_deccelerationSpeed * deccMultiplier;
+                velocityX = Mathf.Clamp(velocityX, -m_movementSpeed, 0);
+                m_rb.velocity = new Vector2(velocityX, m_rb.velocity.y);
+            }
+        }
+        else {
+            m_rb.velocity = new Vector2(m_movement.x * m_movementSpeed, m_rb.velocity.y);
+        }
     }
 
     private void HandleAirMovement() {
-        if(m_rb.velocity.y > 0) {
+        if(m_rb.velocity.y > 0 && !m_isJumpCancelled) {
             m_rb.gravityScale = 1 / m_jumpSpeed;
         }
         else {
@@ -80,20 +120,31 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void HandleJump() {
-        if (!m_canJump) {
+        if (!CanJump) {
             return;
         }
-        switch (m_movementState) {
-            case MovementState.Ground:
-                float force = (Mathf.Sqrt(2 * 9.81f * m_jumpForce) * m_rb.mass) / Time.fixedDeltaTime;
-                m_rb.AddForce(new Vector2(0, force));
-                m_canJump = false;
-                break;
+        float force = (Mathf.Sqrt(2 * 9.81f * m_jumpForce) * m_rb.mass) / Time.fixedDeltaTime;
+        if(IsDropJump) {
+            m_rb.velocity = new Vector2(m_rb.velocity.x, 0);
         }
+        m_rb.AddForce(new Vector2(0, force));
+    }
+
+    private void HandleJumpCancel() {
+        if (m_rb.velocity.y < 0) {
+            return;
+        }
+        m_isJumpCancelled = true;
+        m_rb.velocity = new Vector2(m_rb.velocity.x, m_rb.velocity.y - (m_rb.velocity.y * .5f));
+        m_rb.gravityScale = m_fallSpeed;
     }
 
     private bool IsGrounded() {
-        return Physics2D.BoxCast(transform.position, m_collider.size, 0, Vector2.down, .1f, LayerMask.GetMask("World"));
+        if(Physics2D.BoxCast(transform.position, m_collider.size, 0, Vector2.down, .1f, LayerMask.GetMask("World"))) {
+            m_lastGroundTIme = Time.time;
+            return true;
+        }
+        return false;
     }
 
     private void OnMove(Vector2 value) {
@@ -104,13 +155,19 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
     }
 
+    private void OnJumpCancel() {
+        HandleJumpCancel();
+    }
+
     private void OnEnable() {
         InputEventSender.OnMoveEvent += OnMove;
         InputEventSender.OnJumpEvent += OnJump;
+        InputEventSender.OnJumpCancelEvent += OnJumpCancel;
     }
 
     private void OnDisable() {
         InputEventSender.OnMoveEvent -= OnMove;
         InputEventSender.OnJumpEvent -= OnJump;
+        InputEventSender.OnJumpCancelEvent -= OnJumpCancel;
     }
 }

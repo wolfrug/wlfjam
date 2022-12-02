@@ -12,6 +12,7 @@ public class PlayerInputs : MonoBehaviour
         m_playerInputs.Movement.Move.performed += OnMove;
         m_playerInputs.Movement.Move.canceled += OnMove;
         m_playerInputs.Movement.Jump.performed += OnJump;
+        m_playerInputs.Movement.Jump.canceled += OnJumpCancel;
         m_playerInputs.Enable();
     }
 
@@ -19,6 +20,7 @@ public class PlayerInputs : MonoBehaviour
         m_playerInputs.Movement.Move.performed -= OnMove;
         m_playerInputs.Movement.Move.canceled -= OnMove;
         m_playerInputs.Movement.Jump.performed -= OnJump;
+        m_playerInputs.Movement.Jump.canceled -= OnJumpCancel;
         m_playerInputs.Disable();
     }
 
@@ -28,5 +30,9 @@ public class PlayerInputs : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext ctx) {
         InputEventSender.SendOnJump();
+    }
+
+    private void OnJumpCancel(InputAction.CallbackContext ctx) {
+        InputEventSender.SendOnJumpCancel();
     }
 }
