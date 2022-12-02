@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 144170849}
   - component: {fileID: 144170852}
-  - component: {fileID: 144170851}
   - component: {fileID: 144170850}
   m_Layer: 23
   m_Name: ParallaxCamera4
@@ -77,14 +76,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &144170851
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144170848}
-  m_Enabled: 1
 --- !u!114 &144170850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +154,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1436340923}
   - component: {fileID: 1436340926}
-  - component: {fileID: 1436340925}
   - component: {fileID: 1436340924}
   m_Layer: 20
   m_Name: ParallaxCamera1
@@ -230,14 +220,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1436340925
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436340922}
-  m_Enabled: 1
 --- !u!114 &1436340924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +263,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1507172138}
   - component: {fileID: 1507172141}
-  - component: {fileID: 1507172140}
   - component: {fileID: 1507172139}
   m_Layer: 22
   m_Name: ParallaxCamera3
@@ -348,14 +329,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1507172140
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507172137}
-  m_Enabled: 1
 --- !u!114 &1507172139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +372,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1598780339}
   - component: {fileID: 1598780342}
-  - component: {fileID: 1598780341}
   - component: {fileID: 1598780340}
   m_Layer: 21
   m_Name: ParallaxCamera2
@@ -466,14 +438,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1598780341
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598780338}
-  m_Enabled: 1
 --- !u!114 &1598780340
 MonoBehaviour:
   m_ObjectHideFlags: 0
