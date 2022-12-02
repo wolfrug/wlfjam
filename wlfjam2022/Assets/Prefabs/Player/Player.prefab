@@ -216,9 +216,10 @@ GameObject:
   - component: {fileID: 2919162622835189923}
   - component: {fileID: 2919162622835189922}
   - component: {fileID: 2919162622835189920}
+  - component: {fileID: 260005840314899117}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,6 +317,10 @@ MonoBehaviour:
   m_jumpForce: 10
   m_jumpSpeed: 0.5
   m_fallSpeed: 4
+  m_hasInertia: 1
+  m_accelerationSpeed: 1
+  m_deccelerationSpeed: 1
+  m_turnSpeed: 1
 --- !u!114 &2919162622835189920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,5 +331,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40d5b9e721c6b34ca41413f786bb48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &260005840314899117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919162622835189926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35ce84f93ebed84b8bca9919afd4fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
