@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
 
     private Transform m_respawnPoint;
 
-    public void GetHit() {
+    public void GetHit(bool isEnvironmentHazard = false) {
         if(m_respawnPoint == null) {
+            return;
+        }
+        if (IsHiding && !isEnvironmentHazard) {
             return;
         }
         transform.position = m_respawnPoint.position;
