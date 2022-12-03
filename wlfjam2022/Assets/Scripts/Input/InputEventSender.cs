@@ -11,6 +11,7 @@ public static class InputEventSender
     public static InputEvent OnJumpEvent;
     public static InputEvent OnJumpCancelEvent;
     public static InputEvent OnDance;
+    public static InputEvent OnHide;
 
     public static void SendOnMove(Vector2 value) {
         OnMoveEvent?.Invoke(value);
@@ -26,5 +27,9 @@ public static class InputEventSender
 
     public static void SendOnDance() {
         OnDance?.Invoke();
+    }
+
+    public static void SendOnHide() {
+        OnHide?.Invoke();
     }
 }
