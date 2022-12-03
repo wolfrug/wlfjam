@@ -7,6 +7,19 @@ public class Player : MonoBehaviour
     public bool IsHiding { get; private set; }
     public bool IsDancing { get; private set; }
 
+    private Transform m_respawnPoint;
+
+    public void GetHit() {
+        if(m_respawnPoint == null) {
+            return;
+        }
+        transform.position = m_respawnPoint.position;
+    }
+
+    public void HitCheckPoint(Transform transform) {
+        m_respawnPoint = transform;
+    }
+
     private void OnDanceStart() {
         IsDancing = true;
     }
