@@ -10,21 +10,21 @@ public class PlayerInteractions : MonoBehaviour
     private void OnDance() {
         m_isDancing = !m_isDancing;
         if (m_isDancing) {
-            GlobalEventSender.SendDanceStart();
+            GlobalEventSender.SendRequestDanceStart();
         }
         else {
-            GlobalEventSender.SendDanceEnd();
+            GlobalEventSender.SendRequestDanceEnd();
         }
     }
 
     private void OnHide() {
         m_isHiding = !m_isHiding;
         if (m_isHiding) {
-            GlobalEventSender.SendHideStart();
+            GlobalEventSender.SendRequestHideStart();
         }
 
         else {
-            GlobalEventSender.SendHideEnd();
+            GlobalEventSender.SendRequestHideEnd();
         }
     }
 

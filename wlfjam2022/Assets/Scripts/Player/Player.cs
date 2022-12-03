@@ -17,39 +17,57 @@ public class Player : MonoBehaviour
             return;
         }
         transform.position = m_respawnPoint.position;
+        RequestDanceEnd();
+        RequestHideEnd();
     }
 
     public void HitCheckPoint(Transform transform) {
         m_respawnPoint = transform;
     }
 
-    private void OnDanceStart() {
+    private void RequestDanceStart() {
+        if (IsDancing) {
+            return;
+        }
         IsDancing = true;
+        GlobalEventSender.SendDanceStart();
     }
 
-    private void OnDanceEnd() { 
+    private void RequestDanceEnd() {
+        if (!IsDancing) {
+            return;
+        }
         IsDancing = false;
+        GlobalEventSender.SendDanceEnd();
     }
 
-    private void OnHideStart() {
+    private void RequestHideStart() {
+        if (IsHiding) {
+            return;
+        }
         IsHiding = true;
+        GlobalEventSender.SendHideStart();
     }
 
-    private void OnHideEnd() {
+    private void RequestHideEnd() {
+        if (!IsHiding) {
+            return;
+        }
         IsHiding = false;
+        GlobalEventSender.SendHideEnd();
     }
 
     private void OnEnable() {
-        GlobalEventSender.OnDanceStart += OnDanceStart;
-        GlobalEventSender.OnDanceEnd += OnDanceEnd;
-        GlobalEventSender.OnHideStart += OnHideStart;
-        GlobalEventSender.OnHideEnd += OnHideEnd;
+        GlobalEventSender.RequestDanceStartEvent += RequestDanceStart;
+        GlobalEventSender.RequestDanceEndEvent += RequestDanceEnd;
+        GlobalEventSender.RequestHideStart += RequestHideStart;
+        GlobalEventSender.RequestHideEnd += RequestHideEnd;
     }
 
     private void OnDisable() {
-        GlobalEventSender.OnDanceStart -= OnDanceStart;
-        GlobalEventSender.OnDanceEnd -= OnDanceEnd;
-        GlobalEventSender.OnHideStart -= OnHideStart;
-        GlobalEventSender.OnHideEnd -= OnHideEnd;
+        GlobalEventSender.RequestDanceStartEvent -= RequestDanceStart;
+        GlobalEventSender.RequestDanceEndEvent -= RequestDanceEnd;
+        GlobalEventSender.RequestHideStart -= RequestHideStart;
+        GlobalEventSender.RequestHideEnd -= RequestHideEnd;
     }
 }

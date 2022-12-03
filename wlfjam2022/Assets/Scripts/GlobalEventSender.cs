@@ -6,8 +6,16 @@ public class GlobalEventSender : MonoBehaviour {
 
     public delegate void DanceEvent();
 
+    public static DanceEvent RequestDanceStartEvent;
+    public static DanceEvent RequestDanceEndEvent;
     public static DanceEvent OnDanceStart;
     public static DanceEvent OnDanceEnd;
+    public static void SendRequestDanceStart() {
+        RequestHideStart?.Invoke();
+    }
+    public static void SendRequestDanceEnd() {
+        RequestHideEnd?.Invoke();
+    }
 
     public static void SendDanceStart() {
         OnDanceStart?.Invoke();
@@ -18,8 +26,18 @@ public class GlobalEventSender : MonoBehaviour {
     }
 
     public delegate void HideEvent();
+
+    public static HideEvent RequestHideStart;
+    public static HideEvent RequestHideEnd;
     public static HideEvent OnHideStart;
     public static HideEvent OnHideEnd;
+
+    public static void SendRequestHideStart() {
+        RequestHideStart?.Invoke();
+    }
+    public static void SendRequestHideEnd() {
+        RequestHideEnd?.Invoke();
+    }
 
     public static void SendHideStart() {
         OnHideStart?.Invoke();
