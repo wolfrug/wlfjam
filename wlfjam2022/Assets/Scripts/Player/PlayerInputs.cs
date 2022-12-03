@@ -16,6 +16,8 @@ public class PlayerInputs : MonoBehaviour
 
         m_playerInputs.Interaction.Dance.performed += OnDance;
         m_playerInputs.Interaction.Dance.canceled += OnDance;
+        m_playerInputs.Interaction.Hide.performed += OnHide;
+        m_playerInputs.Interaction.Hide.canceled += OnHide;
 
         m_playerInputs.Enable();
     }
@@ -28,6 +30,8 @@ public class PlayerInputs : MonoBehaviour
 
         m_playerInputs.Interaction.Dance.performed -= OnDance;
         m_playerInputs.Interaction.Dance.canceled -= OnDance;
+        m_playerInputs.Interaction.Hide.performed -= OnHide;
+        m_playerInputs.Interaction.Hide.canceled -= OnHide;
         m_playerInputs.Disable();
     }
 
@@ -45,5 +49,9 @@ public class PlayerInputs : MonoBehaviour
 
     private void OnDance(InputAction.CallbackContext ctx) {
         InputEventSender.SendOnDance();
+    }
+
+    private void OnHide(InputAction.CallbackContext ctx) {
+        InputEventSender.SendOnHide();
     }
 }

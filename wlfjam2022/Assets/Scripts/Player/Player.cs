@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public bool IsHiding { get; private set; }
+    public bool IsDancing { get; private set; }
+
+    private void OnDanceStart() {
+        IsDancing = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnDanceEnd() { 
+        IsDancing = false;
+    }
+
+    private void OnHideStart() {
+        IsHiding = true;
+    }
+
+    private void OnHideEnd() {
+        IsHiding = false;
+    }
+
+    private void OnEnable() {
+        GlobalEventSender.OnDanceStart += OnDanceStart;
+        GlobalEventSender.OnDanceEnd += OnDanceEnd;
+        GlobalEventSender.OnHideStart += OnHideStart;
+        GlobalEventSender.OnHideEnd += OnHideEnd;
+    }
+
+    private void OnDisable() {
+        GlobalEventSender.OnDanceStart -= OnDanceStart;
+        GlobalEventSender.OnDanceEnd -= OnDanceEnd;
+        GlobalEventSender.OnHideStart -= OnHideStart;
+        GlobalEventSender.OnHideEnd -= OnHideEnd;
     }
 }

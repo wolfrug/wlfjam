@@ -182,6 +182,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hide"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3eb5df2-9702-4403-ae6c-97836b582311"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -193,6 +202,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9d78e69-b4d4-44cb-85c2-8b94502d5997"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20cd1e02-b1f4-459d-968c-b5ab693ffe35"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -208,6 +239,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_Dance = m_Interaction.FindAction("Dance", throwIfNotFound: true);
+        m_Interaction_Hide = m_Interaction.FindAction("Hide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -309,11 +341,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Interaction;
     private IInteractionActions m_InteractionActionsCallbackInterface;
     private readonly InputAction m_Interaction_Dance;
+    private readonly InputAction m_Interaction_Hide;
     public struct InteractionActions
     {
         private @PlayerControls m_Wrapper;
         public InteractionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Dance => m_Wrapper.m_Interaction_Dance;
+        public InputAction @Hide => m_Wrapper.m_Interaction_Hide;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -326,6 +360,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dance.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnDance;
                 @Dance.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnDance;
                 @Dance.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnDance;
+                @Hide.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnHide;
+                @Hide.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnHide;
+                @Hide.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnHide;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -333,6 +370,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dance.started += instance.OnDance;
                 @Dance.performed += instance.OnDance;
                 @Dance.canceled += instance.OnDance;
+                @Hide.started += instance.OnHide;
+                @Hide.performed += instance.OnHide;
+                @Hide.canceled += instance.OnHide;
             }
         }
     }
@@ -345,5 +385,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IInteractionActions
     {
         void OnDance(InputAction.CallbackContext context);
+        void OnHide(InputAction.CallbackContext context);
     }
 }
