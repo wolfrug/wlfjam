@@ -50,6 +50,9 @@ public class DancePad : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.CompareTag("Player")) {
             m_isActive = true;
+            if (collision.transform.GetComponent<Player>().IsDancing) {
+                OnDanceStart();
+            }
         }    
     }
 
