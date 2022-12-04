@@ -67,17 +67,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalPlayer Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 946850563632637407, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+      propertyPath: m_Size.y
+      value: 3.9599967
+      objectReference: {fileID: 0}
+    - target: {fileID: 946850563632637407, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.4799984
+      objectReference: {fileID: 0}
     - target: {fileID: 946850564182162796, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: field of view
       value: 90.93
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.0639987
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.26919
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.z
