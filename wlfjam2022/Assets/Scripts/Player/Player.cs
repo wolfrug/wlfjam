@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private MovementSettingsData m_hideMovementSettings;
     [SerializeField]
     private MovementSettingsData m_danceMovementSettings;
+    [SerializeField]
+    private GameObject m_danceParticles;
 
     private Transform m_respawnPoint;
 
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     private void Start() {
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerMovement.SetMovementValues(m_walkMovementSettings);
+        m_danceParticles.SetActive(false);
     }
 
     public void GetHit(bool isEnvironmentHazard = false) {
@@ -46,6 +49,7 @@ public class Player : MonoBehaviour
         IsDancing = true;
         m_playerMovement.SetMovementValues(m_danceMovementSettings);
         GlobalEventSender.SendDanceStart();
+        StartDanceParticles();
     }
 
     private void RequestDanceEnd() {
@@ -55,6 +59,7 @@ public class Player : MonoBehaviour
         IsDancing = false;
         m_playerMovement.SetMovementValues(m_walkMovementSettings);
         GlobalEventSender.SendDanceEnd();
+        StartCoroutine(StopDanceParticlesCoroutine());
     }
 
     private void RequestHideStart() {
@@ -73,6 +78,31 @@ public class Player : MonoBehaviour
         IsHiding = false;
         m_playerMovement.SetMovementValues(m_walkMovementSettings);
         GlobalEventSender.SendHideEnd();
+    }
+
+    private void StartDanceParticles() {
+        foreach (var item in m_danceParticles.GetComponentsInChildren<ParticleSystem>()) {
+            item.Play();
+        }
+        m_danceParticles.SetActive(true);
+    }
+
+
+    private IEnumerator StopDanceParticlesCoroutine() {
+        ParticleSystem[] particles = m_danceParticles.GetComponentsInChildren<ParticleSystem>();
+        int particlesCount = 0;
+        foreach (var item in particles) {
+            item.Stop();
+            particlesCount += item.particleCount;
+        }
+        while(particlesCount > 0) {
+            particlesCount = 0;
+            foreach (var item in particles) {
+                particlesCount += item.particleCount;
+            }
+            yield return null; 
+        }
+        m_danceParticles.SetActive(false);
     }
 
     private void OnEnable() {
