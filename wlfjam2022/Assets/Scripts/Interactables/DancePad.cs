@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class DancePadDoneEvent : UnityEvent<DancePad> { }
 
 public class DancePad : MonoBehaviour {
     [SerializeField]
@@ -8,6 +12,8 @@ public class DancePad : MonoBehaviour {
 
     [SerializeField]
     private SpriteRenderer m_fillObject;
+
+    public DancePadDoneEvent m_activatedEvent;
     private bool m_isActive;
     private bool m_isDancing = false;
     private bool m_isFull {
@@ -39,6 +45,7 @@ public class DancePad : MonoBehaviour {
             m_completionNormalized = 1;
             if (m_activateObject != null) {
                 m_activateObject.Activate ();
+                m_activatedEvent.Invoke (this);
             }
         }
 
