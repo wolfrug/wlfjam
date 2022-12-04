@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private bool m_isPingPong;
     [SerializeField]
     private float m_movementSpeed = 1;
+    private SpriteRenderer m_spriteRenderer;
 
     private Transform m_currentTarget;
 
@@ -17,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     private int m_currentIndex = 0;
 
     private void Start() {
+        m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if(m_targets.Count > 0) {
             m_currentTarget = m_targets[m_currentIndex];
             StartCoroutine(MoveCoroutine());
@@ -26,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator MoveCoroutine() {
         while(transform.position != m_currentTarget.position) {
             transform.position = Vector2.MoveTowards(transform.position, m_currentTarget.position, m_movementSpeed * Time.deltaTime);
+            m_spriteRenderer.flipX = transform.position.x > m_currentTarget.position.x;
             yield return null;
         }
         GetNextTarget();
