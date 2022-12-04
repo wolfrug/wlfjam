@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
     public bool IsHiding { get; private set; }
     public bool IsDancing { get; private set; }
 
@@ -18,71 +17,72 @@ public class Player : MonoBehaviour
 
     private PlayerMovement m_playerMovement;
 
-    private void Start() {
-        m_playerMovement = GetComponent<PlayerMovement>();
-        m_playerMovement.SetMovementValues(m_walkMovementSettings);
+    private void Start () {
+        m_playerMovement = GetComponent<PlayerMovement> ();
+        m_playerMovement.SetMovementValues (m_walkMovementSettings);
     }
 
-    public void GetHit(bool isEnvironmentHazard = false) {
-        if(m_respawnPoint == null) {
+    public void GetHit (bool isEnvironmentHazard = false) {
+        if (m_respawnPoint == null) {
             return;
         }
         if (IsHiding && !isEnvironmentHazard) {
             return;
         }
         transform.position = m_respawnPoint.position;
-        RequestDanceEnd();
-        RequestHideEnd();
+        RequestDanceEnd ();
+        RequestHideEnd ();
+        AudioManager.instance.PlaySFX ("hit");
     }
 
-    public void HitCheckPoint(Transform transform) {
+    public void HitCheckPoint (Transform transform) {
         m_respawnPoint = transform;
     }
 
-    private void RequestDanceStart() {
+    private void RequestDanceStart () {
         if (IsDancing || IsHiding) {
             return;
         }
         IsDancing = true;
-        m_playerMovement.SetMovementValues(m_danceMovementSettings);
-        GlobalEventSender.SendDanceStart();
+        m_playerMovement.SetMovementValues (m_danceMovementSettings);
+        GlobalEventSender.SendDanceStart ();
     }
 
-    private void RequestDanceEnd() {
+    private void RequestDanceEnd () {
         if (!IsDancing) {
             return;
         }
         IsDancing = false;
-        m_playerMovement.SetMovementValues(m_walkMovementSettings);
-        GlobalEventSender.SendDanceEnd();
+        m_playerMovement.SetMovementValues (m_walkMovementSettings);
+        GlobalEventSender.SendDanceEnd ();
     }
 
-    private void RequestHideStart() {
+    private void RequestHideStart () {
         if (IsHiding || IsDancing) {
             return;
         }
         IsHiding = true;
-        m_playerMovement.SetMovementValues(m_hideMovementSettings);
-        GlobalEventSender.SendHideStart();
+        m_playerMovement.SetMovementValues (m_hideMovementSettings);
+        GlobalEventSender.SendHideStart ();
     }
 
-    private void RequestHideEnd() {
+    private void RequestHideEnd () {
         if (!IsHiding) {
             return;
         }
         IsHiding = false;
-        m_playerMovement.SetMovementValues(m_walkMovementSettings);
-        GlobalEventSender.SendHideEnd();
+        m_playerMovement.SetMovementValues (m_walkMovementSettings);
+        GlobalEventSender.SendHideEnd ();
     }
 
-    private void OnEnable() {
+    private void OnEnable () {
         GlobalEventSender.RequestDanceStartEvent += RequestDanceStart;
         GlobalEventSender.RequestDanceEndEvent += RequestDanceEnd;
         GlobalEventSender.RequestHideStart += RequestHideStart;
         GlobalEventSender.RequestHideEnd += RequestHideEnd;
     }
 
-    private void OnDisable() {
+    private void OnDisable () {
         GlobalEventSender.RequestDanceStartEvent -= RequestDanceStart;
         GlobalEventSender.RequestDanceEndEvent -= RequestDanceEnd;
         GlobalEventSender.RequestHideStart -= RequestHideStart;

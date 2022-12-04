@@ -46,6 +46,9 @@ public class PlayerAnimator : MonoBehaviour {
         if (rb.velocity.y != 0f) {
             animator.SetBool ("isJumping", true);
         } else {
+            if (animator.GetBool ("isJumping")) {
+                AudioManager.instance.PlaySFX ("land");
+            }
             animator.SetBool ("isJumping", false);
         }
     }

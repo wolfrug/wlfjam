@@ -4,61 +4,33 @@ using FMODUnity;
 using UnityEngine;
 
 public class FMOD_AnimationSoundHelper : MonoBehaviour {
-    public string soundToPlay = "";
-    public StudioEventEmitter eventEmitter1;
-    public StudioEventEmitter eventEmitter2;
-    public StudioEventEmitter eventEmitter3;
-
-    public StudioEventEmitter eventEmitter4;
-
-    public StudioEventEmitter eventEmitter5;
-
-    public StudioEventEmitter eventEmitter6;
+    public string soundToPlay1 = "";
+    public string soundToPlay2 = "";
+    public string soundToPlay3 = "";
+    public string soundToPlay4 = "";
+    public string soundToPlay5 = "";
+    public string soundToPlay6 = "";
     // Start is called before the first frame update
 
     public void PlaySound1 () {
-        if (eventEmitter1 == null) {
-            //AudioManager.instance.PlaySFX (soundToPlay);
-        } else {
-            eventEmitter1.Play ();
-        }
+        AudioManager.instance.PlaySFX (soundToPlay1);
     }
     public void PlaySound2 () {
-        if (eventEmitter2 == null) {
-            //AudioManager.instance.PlaySFX (soundToPlay);
-        } else {
-            eventEmitter2.Play ();
-        }
+       AudioManager.instance.PlaySFX (soundToPlay2);
     }
     public void PlaySound3 () {
-        if (eventEmitter3 == null) {
-            //AudioManager.instance.PlaySFX (soundToPlay);
-        } else {
-            eventEmitter3.Play ();
-        }
+       AudioManager.instance.PlaySFX (soundToPlay3);
     }
 
     public void PlaySound4 () {
-        if (eventEmitter3 == null) {
-            //AudioManager.instance.PlaySFX (soundToPlay);
-        } else {
-            eventEmitter3.Play ();
-        }
+       AudioManager.instance.PlaySFX (soundToPlay4);
     }
 
     public void PlaySound5 () {
-        if (eventEmitter3 == null) {
-            //AudioManager.instance.PlaySFX (soundToPlay);
-        } else {
-            eventEmitter3.Play ();
-        }
+       AudioManager.instance.PlaySFX (soundToPlay5);
     }
 
     public void PlaySound6 () {
-        if (eventEmitter3 == null) {
-            //AudioManager.instance.PlaySFX (soundToPlay);
-        } else {
-            eventEmitter3.Play ();
-        }
+       AudioManager.instance.PlaySFX (soundToPlay6);
     }
 }
