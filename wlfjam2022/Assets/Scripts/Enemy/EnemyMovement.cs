@@ -61,6 +61,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDrawGizmos() {
         foreach (var item in m_targets) {
+            if(item == null) {
+                continue;
+            }
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(item.position, 1);
         }
