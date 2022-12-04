@@ -12,28 +12,20 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D m_rb;
     private BoxCollider2D m_collider;
     private Vector2 m_movement;
-    [SerializeField, Tooltip("Character ground speed")]
     private float m_movementSpeed = 2;
-    [SerializeField, Tooltip("How fast the character's movement can be changed midair")]
     private float m_airSpeed = .5f;
-    [SerializeField, Tooltip("Jump initial force")]
     private float m_jumpForce = 2;
-    [SerializeField, Tooltip("Jump upwards gravity divider")]
     private float m_jumpSpeed = 1;
-    [SerializeField, Tooltip("How fast character falls")]
     private float m_fallSpeed = 1;
-    [SerializeField, Tooltip("If the characters jas inertia in start and end of movement")]
     private bool m_hasInertia = true;
-    [SerializeField]
     private float m_accelerationSpeed = 1;
-    [SerializeField]
     private float m_deccelerationSpeed = 1;
-    [SerializeField, Tooltip("How fast the character turns mid run")]
     private float m_turnSpeed = 1;
+    private bool m_canJump;
 
     private bool CanJump { 
         get {
-            return m_rb.velocity.y <= 0 && IsDropJump;
+            return m_rb.velocity.y <= 0 && IsDropJump && m_canJump;
         } 
     }
     private bool IsDropJump {
@@ -74,6 +66,19 @@ public class PlayerMovement : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void SetMovementValues(MovementSettingsData data) {
+        m_movementSpeed = data.MovementSpeed;
+        m_airSpeed = data.AirSpeed;
+        m_jumpForce = data.JumpForce;
+        m_jumpSpeed = data.JumpSpeed;
+        m_fallSpeed = data.FallSpeed;
+        m_hasInertia = data.HasInertia;
+        m_accelerationSpeed = data.AccelerationSpeed;
+        m_deccelerationSpeed = data.DeccelerationSpeed;
+        m_turnSpeed = data.TurnSpeed;
+        m_canJump = data.CanJump;
     }
 
     private void HandleGroundMovement() {
@@ -131,6 +136,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void HandleJumpCancel() {
+        if (!m_canJump) {
+            return;
+        }
         if (m_rb.velocity.y < 0) {
             return;
         }

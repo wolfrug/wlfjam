@@ -11,10 +11,10 @@ public class GlobalEventSender : MonoBehaviour {
     public static DanceEvent OnDanceStart;
     public static DanceEvent OnDanceEnd;
     public static void SendRequestDanceStart() {
-        RequestHideStart?.Invoke();
+        RequestDanceStartEvent?.Invoke();
     }
     public static void SendRequestDanceEnd() {
-        RequestHideEnd?.Invoke();
+        RequestDanceEndEvent?.Invoke();
     }
 
     public static void SendDanceStart() {

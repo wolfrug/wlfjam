@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DancePad : MonoBehaviour
 {
+    [SerializeField]
+    private Interactable m_activateObject;
     private bool m_isActive;
     private bool m_isDancing = false;
     private bool m_isFull { 
@@ -34,6 +36,9 @@ public class DancePad : MonoBehaviour
         }
         else if(m_isDancing && !m_completionTimer.Update()) {
             m_completionNormalized = 1;
+            if (m_activateObject != null) {
+                m_activateObject.Activate(); 
+            }
         }
 
         if (!m_isDancing && !m_coolDownTimer.Update()) {
@@ -45,6 +50,9 @@ public class DancePad : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.CompareTag("Player")) {
             m_isActive = true;
+            if (collision.transform.GetComponent<Player>().IsDancing) {
+                OnDanceStart();
+            }
         }    
     }
 

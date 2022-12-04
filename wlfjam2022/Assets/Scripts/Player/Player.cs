@@ -7,7 +7,21 @@ public class Player : MonoBehaviour
     public bool IsHiding { get; private set; }
     public bool IsDancing { get; private set; }
 
+    [SerializeField]
+    private MovementSettingsData m_walkMovementSettings;
+    [SerializeField]
+    private MovementSettingsData m_hideMovementSettings;
+    [SerializeField]
+    private MovementSettingsData m_danceMovementSettings;
+
     private Transform m_respawnPoint;
+
+    private PlayerMovement m_playerMovement;
+
+    private void Start() {
+        m_playerMovement = GetComponent<PlayerMovement>();
+        m_playerMovement.SetMovementValues(m_walkMovementSettings);
+    }
 
     public void GetHit(bool isEnvironmentHazard = false) {
         if(m_respawnPoint == null) {
@@ -26,10 +40,11 @@ public class Player : MonoBehaviour
     }
 
     private void RequestDanceStart() {
-        if (IsDancing) {
+        if (IsDancing || IsHiding) {
             return;
         }
         IsDancing = true;
+        m_playerMovement.SetMovementValues(m_danceMovementSettings);
         GlobalEventSender.SendDanceStart();
     }
 
@@ -38,14 +53,16 @@ public class Player : MonoBehaviour
             return;
         }
         IsDancing = false;
+        m_playerMovement.SetMovementValues(m_walkMovementSettings);
         GlobalEventSender.SendDanceEnd();
     }
 
     private void RequestHideStart() {
-        if (IsHiding) {
+        if (IsHiding || IsDancing) {
             return;
         }
         IsHiding = true;
+        m_playerMovement.SetMovementValues(m_hideMovementSettings);
         GlobalEventSender.SendHideStart();
     }
 
@@ -54,6 +71,7 @@ public class Player : MonoBehaviour
             return;
         }
         IsHiding = false;
+        m_playerMovement.SetMovementValues(m_walkMovementSettings);
         GlobalEventSender.SendHideEnd();
     }
 

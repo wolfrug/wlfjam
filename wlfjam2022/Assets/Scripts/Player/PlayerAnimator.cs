@@ -16,6 +16,8 @@ public class PlayerAnimator : MonoBehaviour {
         }
         GlobalEventSender.OnDanceStart += DanceStart;
         GlobalEventSender.OnDanceEnd += DanceEnd;
+        GlobalEventSender.OnHideStart += HideStart;
+        GlobalEventSender.OnHideEnd += HideEnd;
     }
 
     void DanceStart () {
@@ -23,6 +25,13 @@ public class PlayerAnimator : MonoBehaviour {
     }
     void DanceEnd () {
         animator.SetBool ("isAnimating", false);
+    }
+
+    void HideStart () {
+        animator.SetBool ("isVeiled", true);
+    }
+    void HideEnd () {
+        animator.SetBool ("isVeiled", false);
     }
 
     // Update is called once per frame
