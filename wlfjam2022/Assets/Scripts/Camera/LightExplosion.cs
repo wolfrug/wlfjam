@@ -70,7 +70,7 @@ public class LightExplosion : Interactable {
         // Unveil? Return to normal?
         m_finishedAnimation = true;
         if (!m_allowContinueAfter) { // no continuing, so we just invoke the done
-            yield return new WaitForSeconds (2f);
+            yield return new WaitForSeconds (4f);
             m_doneEvent.Invoke (this);
             Debug.Log ("Victory!");
         }
