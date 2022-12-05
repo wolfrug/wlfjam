@@ -17,6 +17,9 @@ public class LightExplosionCameraTrigger : MonoBehaviour {
     void Start () {
         m_lightMeter = FindObjectOfType<LightMeter> ();
     }
+    public void SwitchCamera () {
+        CameraManager.Instance.ChangeCamera (m_camera);
+    }
     private void OnTriggerEnter2D (Collider2D collision) {
         if (collision.transform.CompareTag ("Player")) {
             if (m_lightMeter.currentFill >= m_minimumLightLevel) {
