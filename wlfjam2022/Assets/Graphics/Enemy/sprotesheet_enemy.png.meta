@@ -122,7 +122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,9 +141,9 @@ TextureImporter:
       name: sprotesheet_enemy_1
       rect:
         serializedVersion: 2
-        x: 579
+        x: 500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -162,9 +162,9 @@ TextureImporter:
       name: sprotesheet_enemy_2
       rect:
         serializedVersion: 2
-        x: 1158
+        x: 1000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -183,9 +183,9 @@ TextureImporter:
       name: sprotesheet_enemy_3
       rect:
         serializedVersion: 2
-        x: 1737
+        x: 1500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -204,9 +204,9 @@ TextureImporter:
       name: sprotesheet_enemy_4
       rect:
         serializedVersion: 2
-        x: 2316
+        x: 2000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -225,9 +225,9 @@ TextureImporter:
       name: sprotesheet_enemy_5
       rect:
         serializedVersion: 2
-        x: 2895
+        x: 2500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -246,9 +246,9 @@ TextureImporter:
       name: sprotesheet_enemy_6
       rect:
         serializedVersion: 2
-        x: 3474
+        x: 3000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -267,9 +267,9 @@ TextureImporter:
       name: sprotesheet_enemy_7
       rect:
         serializedVersion: 2
-        x: 4053
+        x: 3500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -288,9 +288,9 @@ TextureImporter:
       name: sprotesheet_enemy_8
       rect:
         serializedVersion: 2
-        x: 4632
+        x: 4000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -309,9 +309,9 @@ TextureImporter:
       name: sprotesheet_enemy_9
       rect:
         serializedVersion: 2
-        x: 5211
+        x: 4500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -330,9 +330,9 @@ TextureImporter:
       name: sprotesheet_enemy_10
       rect:
         serializedVersion: 2
-        x: 5790
+        x: 5000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -351,9 +351,9 @@ TextureImporter:
       name: sprotesheet_enemy_11
       rect:
         serializedVersion: 2
-        x: 6369
+        x: 5500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -372,9 +372,9 @@ TextureImporter:
       name: sprotesheet_enemy_12
       rect:
         serializedVersion: 2
-        x: 6948
+        x: 6000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -393,9 +393,9 @@ TextureImporter:
       name: sprotesheet_enemy_13
       rect:
         serializedVersion: 2
-        x: 7527
+        x: 6500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -414,9 +414,9 @@ TextureImporter:
       name: sprotesheet_enemy_14
       rect:
         serializedVersion: 2
-        x: 8106
+        x: 7000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -435,9 +435,9 @@ TextureImporter:
       name: sprotesheet_enemy_15
       rect:
         serializedVersion: 2
-        x: 8685
+        x: 7500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -456,9 +456,9 @@ TextureImporter:
       name: sprotesheet_enemy_16
       rect:
         serializedVersion: 2
-        x: 9264
+        x: 8000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -477,9 +477,9 @@ TextureImporter:
       name: sprotesheet_enemy_17
       rect:
         serializedVersion: 2
-        x: 9843
+        x: 8500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -498,9 +498,9 @@ TextureImporter:
       name: sprotesheet_enemy_18
       rect:
         serializedVersion: 2
-        x: 10422
+        x: 9000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -519,9 +519,9 @@ TextureImporter:
       name: sprotesheet_enemy_19
       rect:
         serializedVersion: 2
-        x: 11001
+        x: 9500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -540,9 +540,9 @@ TextureImporter:
       name: sprotesheet_enemy_20
       rect:
         serializedVersion: 2
-        x: 11580
+        x: 10000
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -561,9 +561,9 @@ TextureImporter:
       name: sprotesheet_enemy_21
       rect:
         serializedVersion: 2
-        x: 12159
+        x: 10500
         y: 0
-        width: 579.13635
+        width: 500
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}

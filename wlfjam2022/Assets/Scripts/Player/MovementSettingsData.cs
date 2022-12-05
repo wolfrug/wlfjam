@@ -22,4 +22,5 @@ public class MovementSettingsData : ScriptableObject
     [Tooltip("How fast the character turns mid run")]
     public float TurnSpeed = 1;
     public bool CanJump = true;
+    public bool CanDance = true;
 }
