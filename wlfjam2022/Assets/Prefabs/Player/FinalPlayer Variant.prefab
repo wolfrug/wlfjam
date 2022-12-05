@@ -1606,6 +1606,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6096494220154052218}
     - target: {fileID: 946850563632637400, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+      propertyPath: m_deathParticlePrefab
+      value: 
+      objectReference: {fileID: 4228163845780922603, guid: 351ec95be052e604eba33c6fbde8bd8e, type: 3}
+    - target: {fileID: 946850563632637400, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_hideMovementSettings
       value: 
       objectReference: {fileID: 11400000, guid: adfed40b0dfa09047967c227f28409af, type: 2}
@@ -1687,11 +1691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.469283
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.13013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1799,6 +1803,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
   m_PrefabInstance: {fileID: 3562028160727265778}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4345197587828215008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 946850564182162706, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+  m_PrefabInstance: {fileID: 3562028160727265778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &108236459319806603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345197587828215008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!4 &4345197588352701486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 946850563632637404, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}

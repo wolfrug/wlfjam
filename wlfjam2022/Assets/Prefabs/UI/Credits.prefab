@@ -720,21 +720,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credits
+  m_text: '<b>Credits</b>
 
-    For the Woman, Life, Freedom Jam, supporting the women of
-    Iran. https://woman-life-freedom.com/
+    For the <i>Woman, Life, Freedom Jam</i>, supporting
+    the women of Iran. https://woman-life-freedom.com/
 
 
-    Code, design: Lassi Niinikorpi, Petter
-    Skult
+    <b>Code</b>: Lassi Niinikorpi,
+    Petter Skult
 
-    Art: Jenny Wiik, Ashley Doucette, Natasha Skult
+    <b>Art</b>: Jenny Wiik, Ashley Doucette, Natasha Skult
 
-    Audio: George
-    Tas
+    <b>Audio</b>:
+    George Tas
 
-    Cheerleader: Dina Ramse
+    <b>Special Thanks</b>: Dina Ramse
 
 '
   m_isRightToLeft: 0

@@ -132,8 +132,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1411086500}
   rb: {fileID: 3546765825730474074}
+  playerLight: {fileID: 0}
+  maxLightIncrease: 15
+  minLight: 6.5
 --- !u!50 &3546765825730474074 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7010938015115717624, guid: 3707f65a538f94848b7d1594adfb9d9a, type: 3}
   m_PrefabInstance: {fileID: 5797115961742580642}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3546765827370903702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7010938015640335156, guid: 3707f65a538f94848b7d1594adfb9d9a, type: 3}
+  m_PrefabInstance: {fileID: 5797115961742580642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8972039155872935989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546765827370903702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}

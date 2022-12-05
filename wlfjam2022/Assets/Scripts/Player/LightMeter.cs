@@ -7,6 +7,8 @@ public class LightMeter : MonoBehaviour {
     public Animator lightMeterAnimator;
     public float currentFill = 0f;
     private static float currentFillStatic = 0f;
+
+    public FMOD_Controller soundController;
     // Start is called before the first frame update
     void Start () {
         foreach (DancePad pad in FindObjectsOfType<DancePad> ()) {
@@ -34,5 +36,6 @@ public class LightMeter : MonoBehaviour {
     void Update () {
         float lerpedValue = Mathf.Lerp (lightMeterAnimator.GetFloat ("light_fill_amount"), currentFill, Time.deltaTime);
         lightMeterAnimator.SetFloat ("light_fill_amount", lerpedValue);
+        soundController.SetValue (lerpedValue * 6f);
     }
 }

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private GameObject m_danceParticles;
 
+    public GameObject m_deathParticlePrefab;
+
     private Transform m_respawnPoint;
 
     private PlayerMovement m_playerMovement;
@@ -35,9 +37,15 @@ public class Player : MonoBehaviour {
         if (IsHiding && !isEnvironmentHazard) {
             return;
         }
+        if (m_deathParticlePrefab != null) {
+            Instantiate (m_deathParticlePrefab, transform.position + new Vector3 (0f, 3f, 0f), Quaternion.identity);
+        }
         transform.position = m_respawnPoint.position;
         RequestDanceEnd ();
         RequestHideEnd ();
+        if (AudioManager.instance != null) {
+            AudioManager.instance.PlaySFX ("hit");
+        };
     }
 
     public void HitCheckPoint (Transform transform) {

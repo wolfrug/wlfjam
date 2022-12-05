@@ -55,7 +55,9 @@ public class PlayerAnimator : MonoBehaviour {
             animator.SetBool ("isJumping", true);
         } else {
             if (animator.GetBool ("isJumping")) {
-                AudioManager.instance.PlaySFX ("land");
+                if (AudioManager.instance != null) {
+                    AudioManager.instance.PlaySFX ("land");
+                };
             }
             animator.SetBool ("isJumping", false);
         }

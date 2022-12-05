@@ -11,6 +11,7 @@ public class FMOD_Controller : MonoBehaviour {
     public float currentValue = 10;
     public float currentEffectiveValue;
     public StudioEventEmitter emitter;
+    public bool isMusicEmitter = true;
     [SerializeField]
     private bool m_active = true;
 
@@ -27,8 +28,13 @@ public class FMOD_Controller : MonoBehaviour {
             emitter.enabled = value;
         }
     }
-    void Awake () {
-        //if (emitter == null) { emitter = GetComponent<StudioEventEmitter> (); };
+    IEnumerator Start () {
+        yield return new WaitForSeconds (1f);
+        if (isMusicEmitter) {
+            if (AudioManager.instance != null) {
+                emitter = AudioManager.instance.musicEmitter;
+            }
+        }
     }
 
     public void SetValue (float newValue) {
