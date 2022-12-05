@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour {
     public Animator animator;
     public Rigidbody2D rb;
+    public UnityEngine.Rendering.Universal.Light2D playerLight;
+
+    public float maxLightIncrease = 15f;
+    public float minLight = 6.5f;
+
+    private float hideMultiplier = 1f;
 
     // Start is called before the first frame update
     void Start () {
@@ -29,9 +35,11 @@ public class PlayerAnimator : MonoBehaviour {
 
     void HideStart () {
         animator.SetBool ("isVeiled", true);
+        hideMultiplier = 0.5f;
     }
     void HideEnd () {
         animator.SetBool ("isVeiled", false);
+        hideMultiplier = 1f;
     }
 
     // Update is called once per frame
@@ -48,5 +56,7 @@ public class PlayerAnimator : MonoBehaviour {
         } else {
             animator.SetBool ("isJumping", false);
         }
+        playerLight.pointLightOuterRadius = Mathf.Lerp (playerLight.pointLightOuterRadius, (minLight + (maxLightIncrease * LightMeter.LightFill)) * hideMultiplier, Time.deltaTime);
+
     }
 }

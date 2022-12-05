@@ -45,8 +45,8 @@ public class DancePad : MonoBehaviour {
             m_completionNormalized = 1;
             if (m_activateObject != null) {
                 m_activateObject.Activate ();
-                m_activatedEvent.Invoke (this);
             }
+            m_activatedEvent.Invoke (this);
         }
 
         if (!m_isDancing && !m_coolDownTimer.Update ()) {

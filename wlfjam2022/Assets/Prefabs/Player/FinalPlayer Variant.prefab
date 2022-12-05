@@ -1623,7 +1623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946850563632637404, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -2.89
       objectReference: {fileID: 0}
     - target: {fileID: 946850563632637404, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1683,15 +1683,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162796, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: orthographic size
-      value: 12
+      value: 8.38
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 133.93872
+      value: 7.469283
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.31043
+      value: 5.13013
       objectReference: {fileID: 0}
     - target: {fileID: 946850564182162799, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1741,6 +1741,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4331133705390140705, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+      propertyPath: playerLight
+      value: 
+      objectReference: {fileID: 6703296701486188808}
     - target: {fileID: 7530301651829901370, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_FollowOffset.y
       value: 0
@@ -1756,6 +1760,10 @@ PrefabInstance:
     - target: {fileID: 7811556674818625858, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.2784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7811556676745033978, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8550111084396705899, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
       propertyPath: m_Lens.FieldOfView
@@ -1796,3 +1804,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 946850563632637404, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
   m_PrefabInstance: {fileID: 3562028160727265778}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6703296701486188808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7811556676745033978, guid: 6c6cd6b44304e5041a12a2bc247e6118, type: 3}
+  m_PrefabInstance: {fileID: 3562028160727265778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

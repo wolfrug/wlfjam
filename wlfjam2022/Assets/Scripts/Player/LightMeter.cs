@@ -6,6 +6,7 @@ public class LightMeter : MonoBehaviour {
     public int maxNumberofDancePads = 5;
     public Animator lightMeterAnimator;
     public float currentFill = 0f;
+    private static float currentFillStatic = 0f;
     // Start is called before the first frame update
     void Start () {
         foreach (DancePad pad in FindObjectsOfType<DancePad> ()) {
@@ -17,6 +18,16 @@ public class LightMeter : MonoBehaviour {
         float fillToAdd = 1f / (float) maxNumberofDancePads;
         //lightMeterAnimator.SetFloat ("light_fill_amount", currentFill + fillToAdd);
         currentFill += fillToAdd;
+        LightFill = currentFill;
+    }
+
+    public static float LightFill {
+        get {
+            return currentFillStatic;
+        }
+        set {
+            currentFillStatic = value;
+        }
     }
 
     // Update is called once per frame
